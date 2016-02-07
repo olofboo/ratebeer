@@ -12,6 +12,12 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
+
+group :development, :test do
+  gem "better_errors"
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
