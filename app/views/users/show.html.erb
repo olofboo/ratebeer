@@ -5,5 +5,23 @@
   <%= @user.username %>
 </p>
 
+<% if @user.ratings.empty? %>
+    No ratings made
+<% else %>
+    Has <%=  pluralize(@user.ratings.count, 'rating') %><br> Average <%= @user.average_rating %>
+<% end %>
+<% if not @user.ratings.empty? %>
+    <p>Ratings: </p>
+    <ul>
+      <% @user.ratings.each do |rating| %>
+          <li><%= rating %>
+            <% if @user == current_user %>
+                <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?'} %></li>
+            <% end %>
+      <% end %>
+    </ul>
+
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
